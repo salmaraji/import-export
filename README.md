@@ -27,17 +27,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 # Add TailwindCss 
-`cd my-project`
-`npm install -D tailwindcss postcss autoprefixer`
-`npx tailwindcss init`
-## go to tailwingCss.config and add this :
- content: [
+first go to your project by :`cd my-project` then install tailwindCss using command :`npm install -D tailwindcss postcss autoprefixer`
+then tap command :`npx tailwindcss init` , after go to tailwingCss.config and add this or change it if content:[] already exist:
+ `content: [
     "./src/**/*.{html,ts}",
-  ],
-## go to style.css and add this:
-@tailwind base;
+  ],` 
+  After go to `style.css` and add this:
+`@tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities;`
 
 
 
