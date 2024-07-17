@@ -1,13 +1,27 @@
 <!-- export.component.html -->
-<div *ngIf="columns.length > 0">
-  <h2>Sélectionner les Colonnes pour l'Exportation</h2>
-  <div *ngFor="let column of columns">
-    <label>
-      <input type="checkbox" [checked]="isSelectedColumn(column)" (change)="toggleColumnSelection(column)" />
-      {{ column }}
-    </label>
-  </div>
+<div class="flex flex-col justify-center items-center">
 
-  <h2>Exportation de Données vers Excel</h2>
-  <button (click)="exportData()">Exporter vers Excel</button>
+  <div *ngIf="columns.length > 0">
+    <h2 class="font-bold text-[16px]">Sélectionner les Colonnes pour l'Exportation</h2>
+    <div *ngFor="let column of columns">
+
+      <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
+        <input type="checkbox" [checked]="isSelectedColumn(column)" (change)="toggleColumnSelection(column)"
+               class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ column }}</label>
+      </div>
+    </div>
+    <!--
+          <label>
+            <input type="checkbox" [checked]="isSelectedColumn(column)" (change)="toggleColumnSelection(column)"/>
+            {{ column }}
+          </label>
+        </div>
+    -->
+    <h2 class="font-bold text-[16px]">Exportation de Données vers Excel</h2>
+    <div class="flex gap-x-2 justify-center items-center">
+      <button (click)="exportData()" class="bg-blue-400 rounded-2xl px-3 font-bold">Exporter vers Excel</button>
+      <i class="bi bi-cloud-arrow-down-fill text-[30px] text-blue-400"></i>
+    </div>
+  </div>
 </div>
