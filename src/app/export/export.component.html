@@ -1,0 +1,13 @@
+<!-- export.component.html -->
+<div *ngIf="columns.length > 0">
+  <h2>Sélectionner les Colonnes pour l'Exportation</h2>
+  <div *ngFor="let column of columns">
+    <label>
+      <input type="checkbox" [checked]="isSelectedColumn(column)" (change)="toggleColumnSelection(column)" />
+      {{ column }}
+    </label>
+  </div>
+
+  <h2>Exportation de Données vers Excel</h2>
+  <button (click)="exportData()">Exporter vers Excel</button>
+</div>

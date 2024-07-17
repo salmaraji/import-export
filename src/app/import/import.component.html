@@ -1,0 +1,21 @@
+<!-- import.component.html -->
+<div>
+  <input type="file" (change)="onFileChange($event)" accept=".xlsx">
+  <button (click)="importData()">Importer</button>
+</div>
+
+<div *ngIf="importedData.length > 0">
+  <h2>Tableau des Données Importées</h2>
+  <table >
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns">{{ column }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of importedData">
+        <td *ngFor="let cell of row">{{ cell }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,19 @@
+/* export.component.css */
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  div {
+    margin-bottom: 5px;
+  }
+  
+  label {
+    display: flex;
+    align-items: center;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
