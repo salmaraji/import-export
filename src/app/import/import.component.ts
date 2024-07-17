@@ -22,7 +22,7 @@ export class ImportComponent {
       const file = input.files[0];
       const extension = file.name.split('.').pop()?.toLowerCase();
 
-      if (extension === 'xls') {
+      if (extension === 'xls' || extension === 'xlsx') {
         this.selectedFile = file;
       } else {
         alert(
