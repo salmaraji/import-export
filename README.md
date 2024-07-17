@@ -37,5 +37,8 @@ then tap command :`npx tailwindcss init` , after go to tailwingCss.config and ad
 @tailwind components;
 @tailwind utilities;`
 
+# Add Bootstrap-icons
+install `bootstrap-icons` by tap command : `npm i bootstrap-icons --save` , then add this `"bootstrap-icons/font/bootstrap-icons.css"` to `styles:[]` in `angular.json` file 
+
 
 
