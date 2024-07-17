@@ -19,9 +19,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let row of importedData" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <td *ngFor="let cell of row" class="px-6 py-4">{{ cell }}</td>
-      </tr>
+        <tr *ngFor="let row of importedData; let i = index">
+          <td *ngFor="let cell of row">{{ cell }}</td>
+          <td>
+            <button (click)="deleteRow(i)">Supprimer</button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

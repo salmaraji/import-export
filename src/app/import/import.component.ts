@@ -62,5 +62,11 @@ export class ImportComponent {
       }
     };
     reader.readAsBinaryString(this.selectedFile);
+    
+  }
+  deleteRow(index: number) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')) {
+      this.importedData.splice(index, 1);
+    }
   }
 }
