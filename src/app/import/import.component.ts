@@ -7,14 +7,13 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./import.component.css'],
 })
 export class ImportComponent {
-  @Output() dataImported = new EventEmitter<{
-    columns: string[];
-    importedData: any[][];
-  }>();
+  @Output() dataImported = new EventEmitter<{ columns: string[],importedData: any[][]}>();
 
   selectedFile: File | null = null;
   importedData: any[][] = [];
   columns: string[] = [];
+  filteredData: any[][] = [];
+  searchTerm: string = '';
 
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -53,11 +52,12 @@ export class ImportComponent {
       if (this.importedData.length > 0) {
         this.columns = this.importedData[0] as string[];
         this.importedData = this.importedData.slice(1);
+        this.filteredData = this.importedData; // Initialize filteredData with importedData
 
         // Émettre les données importées vers le parent (ou vers ExportComponent directement si elles sont imbriquées)
         this.dataImported.emit({
           columns: this.columns,
-          importedData: this.importedData,
+          importedData: this.importedData
         });
       }
     };
@@ -68,5 +68,11 @@ export class ImportComponent {
     if (confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')) {
       this.importedData.splice(index, 1);
     }
+  }
+  filterData() {
+    const lowerCaseSearchTerm = this.searchTerm.toLowerCase();
+    this.filteredData = this.importedData.filter(row => 
+      row.some(cell => cell.toString().toLowerCase().includes(lowerCaseSearchTerm))
+    );
   }
 }

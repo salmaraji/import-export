@@ -1,25 +1,25 @@
-<!-- import.component.html -->
 <div class="flex justify-center items-center mt-10 flex-col">
-
   <div class="flex gap-x-4 justify-center items-center">
-    <input type="file" (change)="onFileChange($event)" accept=".xlsx" class="bg-green-200 rounded-b-lg p-1" >
+    <input type="file" (change)="onFileChange($event)" accept=".xlsx" class="bg-green-200 rounded-b-lg p-1">
     <div class="flex gap-x-2 justify-center items-center">
       <button (click)="importData()" class="bg-green-400 rounded-2xl px-3 font-bold">Importer</button>
-      <i class="bi bi-cloud-arrow-up-fill text-[30px] text-green-400" ></i>
+      <i class="bi bi-cloud-arrow-up-fill text-[30px] text-green-400"></i>
     </div>
-
   </div>
 
   <div *ngIf="importedData.length > 0" class="mt-5 flex flex-col justify-center items-center gap-x-4">
-    <h2 class="font-bold text-[16px] ">Tableau des Données Importées</h2>
+    <h2 class="font-bold text-[16px]">Tableau des Données Importées</h2>
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher..." (input)="filterData()">
+
     <table class="mt-5 w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-      <tr>
-        <th *ngFor="let column of columns" class="px-6 py-3">{{ column }}</th>
-      </tr>
+        <tr>
+          <th *ngFor="let column of columns" class="px-6 py-3">{{ column }}</th>
+          <th class="px-6 py-3">Action</th>
+        </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of importedData; let i = index">
+        <tr *ngFor="let row of filteredData; let i = index">
           <td *ngFor="let cell of row">{{ cell }}</td>
           <td>
             <button (click)="deleteRow(i)">Supprimer</button>
